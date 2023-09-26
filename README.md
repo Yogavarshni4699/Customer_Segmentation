@@ -42,7 +42,8 @@ df = pd.read_csv('data.csv',encoding='unicode_escape')
 df.head()
 ```
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5d11e880-cfbc-4ea6-912a-20575d117a48/8e71563e-cba9-4f08-81f9-9f8b52165f89/Untitled.png)
+![image](https://github.com/Yogavarshni4699/Customer_Segmentation/assets/91062811/84f1f71c-efb4-4c13-abb4-01231bd6f184)
+
 
 The dataframe consists of 8 variables:
 
@@ -95,7 +96,6 @@ df_rec['recency'] = (df_rec['Date'] - pd.to_datetime(min(df_rec['Date']))).dt.da
 
 The dataframe now has a new column called “recency” that tells us when each customer last bought something from the platform:
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5d11e880-cfbc-4ea6-912a-20575d117a48/43663582-f507-4ac9-9cdf-046a04cdcc40/Untitled.png)
 
 ### **Frequency**
 
@@ -114,7 +114,7 @@ rec_freq = df_freq.merge(df_rec,on='CustomerID')
 rec_freq.head()
 ```
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5d11e880-cfbc-4ea6-912a-20575d117a48/a69b7575-237f-4cac-ade5-691668957c51/Untitled.png)
+
 
 ****Monetary Value****
 
@@ -152,11 +152,8 @@ for i in list1:
     plt.show()
 ```
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5d11e880-cfbc-4ea6-912a-20575d117a48/8861197d-5998-40c6-b7cb-dbcbe19c7c12/Untitled.png)
+![image](https://github.com/Yogavarshni4699/Customer_Segmentation/assets/91062811/f07c6226-a78e-4edd-852f-9f11fd238d86)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5d11e880-cfbc-4ea6-912a-20575d117a48/7aa64a7b-cc09-4ff6-8b2d-8e5d452b2d03/Untitled.png)
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5d11e880-cfbc-4ea6-912a-20575d117a48/ae83cd1c-2089-42df-85c8-5c78c6fc3624/Untitled.png)
 
 Observe that “recency” is the only variable with no visible outliers. “Frequency” and “monetary_value”, on the other hand, have many outliers that must be removed before we proceed to build the model.
 
@@ -174,7 +171,7 @@ filtered_entries = (abs_z_scores < 3).all(axis=1)
 new_df = new_df[filtered_entries]
 ```
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5d11e880-cfbc-4ea6-912a-20575d117a48/e1563911-a99d-4f56-94ac-45efcb5a97e5/Untitled.png)
+
 
 ### **Standardization**
 
@@ -220,7 +217,6 @@ plt.xlabel('Number of clusters')
 plt.ylabel('Inertia')
 ```
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5d11e880-cfbc-4ea6-912a-20575d117a48/4ac91356-a2ee-46e1-8e5a-b2b182aac731/Untitled.png)
 
 The “elbow” of this graph is the point of inflection on the curve, and in this case is at the 4-cluster mark.
 
@@ -250,7 +246,7 @@ frame = pd.DataFrame(new_df)
 frame['cluster'] = pred
 ```
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5d11e880-cfbc-4ea6-912a-20575d117a48/0537aa61-b84b-4162-a7c4-0e43e933e16e/Untitled.png)
+
 
 Visualization:
 
@@ -261,10 +257,7 @@ for i in list1:
     plt.show()
 ```
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5d11e880-cfbc-4ea6-912a-20575d117a48/61940925-259e-49d1-9dfb-62cdc86c4479/Untitled.png)
+![image](https://github.com/Yogavarshni4699/Customer_Segmentation/assets/91062811/2ee07841-aae3-4220-9f90-12d076984955)
 
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5d11e880-cfbc-4ea6-912a-20575d117a48/56063b9e-34a8-487c-aaf9-28df90845fa2/Untitled.png)
-
-![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/5d11e880-cfbc-4ea6-912a-20575d117a48/cc54e423-2b59-47fd-9a5e-8b3812ca36dd/Untitled.png)
 
 just by looking at the charts above, we can identify the following attributes of customers in each segment:
